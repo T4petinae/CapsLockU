@@ -70,6 +70,14 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     {
         process_key_mapping("{Escape}")
     }
+    *t::
+    {
+        global
+        capslock_modifier_activated := true
+        SetWorkingDir A_Desktop
+        Run "powershell"
+        SetWorkingDir A_ScriptDir
+    }
 }
 #Hotif
 
