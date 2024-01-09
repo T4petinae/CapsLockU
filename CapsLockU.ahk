@@ -22,9 +22,17 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
 ; Configure key mapping.
 #Hotif GetKeyState("CapsLock", "P") == true
 {
+    *a::
+    {
+        process_native_modifier_mapping("a", "Alt")
+    }
     *b::
     {
         process_key_mapping("{Backspace}")
+    }
+    *c::
+    {
+        process_native_modifier_mapping("c", "Ctrl")
     }
     *d::
     {
@@ -62,21 +70,24 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     {
         process_key_mapping("{PgDn}")
     }
-    *p::
-    {
-        process_key_mapping("{PgUp}")
-    }
     *q::
     {
         process_key_mapping("{Escape}")
     }
+    *s::
+    {
+        process_native_modifier_mapping("s", "Shift")
+    }
     *t::
     {
-        global
-        capslock_modifier_activated := true
+        global capslock_modifier_activated := true
         SetWorkingDir A_Desktop
         Run "powershell"
         SetWorkingDir A_ScriptDir
+    }
+    *u::
+    {
+        process_key_mapping("{PgUp}")
     }
 }
 #Hotif
@@ -89,4 +100,16 @@ process_key_mapping(mapped_key)
     capslock_modifier_activated := true
     mapped_key := "{Blind}" . mapped_key
     SendInput %"mapped_key"%
+}
+
+; Functions used to map a , c , s to Alt , Ctrl , and Shift respectively
+process_native_modifier_mapping(source_key, mapped_key)
+{
+    global
+    capslock_modifier_activated := true
+    mapped_key_down := "{Blind}" . "{" . mapped_key . "Down}"
+    SendInput %"mapped_key_down"%
+    mapped_key_up := "{Blind}" . "{" . mapped_key . "Up}"
+    KeyWait source_key
+    SendInput %"mapped_key_up"%
 }
