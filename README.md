@@ -14,6 +14,14 @@ CapsLockU 是我自用的一套按键映射方案，主要应用场景为文字�
 
 > 鼠标选中需要删除的文字 - 左手按下 `CapsLock`+`d` 组合键（在 CapsLockU 中相当于 `Delete` 键）。
 
+## 使用
+
+在 [AutoHotKey 的官方网站](https://www.autohotkey.com/) 下载 AutoHotKey 程序并安装。
+
+下载仓库中的 [CapsLockU.ahk](https://github.com/T4petinae/CapsLockU/blob/main/CapsLockU.ahk) 文件另存为至电脑的任意位置（推荐在习惯用于安装程序的磁盘下新建一个 AutoHotKey 文件夹进行存放），双击它即可使用。
+
+同时可以为 CapsLockU.ahk 创建快捷方式，将快捷方式移动至开始菜单中的启动文件夹实现开机自动启动。
+
 ## 功能
 
 | 热键 | 效果 | 注释 |
