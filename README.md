@@ -2,7 +2,7 @@
 
 一个基于 AutoHotKey 的 CapsLock 键简易增强方案。
 
-## 简介
+## 前言
 
 CapsLockU 是我自用的一套按键映射方案，主要应用场景为文字办公，可以简化一些需要将手频繁地在鼠标和键盘之间切换的操作。
 
@@ -18,7 +18,7 @@ CapsLockU 是我自用的一套按键映射方案，主要应用场景为文字�
 
 在 [AutoHotKey 的官方网站](https://www.autohotkey.com/) 下载 AutoHotKey 程序并安装。
 
-将仓库中的 [CapsLockU.ahk](https://github.com/T4petinae/CapsLockU/blob/main/CapsLockU.ahk) 文件另存为至电脑的任意位置（推荐在习惯用于安装程序的磁盘下新建一个 AutoHotKey 文件夹进行存放），双击它即可使用。
+下载仓库中的 [CapsLockU.ahk](https://github.com/T4petinae/CapsLockU/blob/main/CapsLockU.ahk) 文件另存为至电脑的任意位置（推荐在习惯用于安装程序的磁盘下新建一个 AutoHotKey 文件夹进行存放），双击它即可使用。
 
 同时可以为 CapsLockU.ahk 创建快捷方式，将快捷方式移动至开始菜单中的启动文件夹实现开机自动启动。
 
@@ -39,10 +39,9 @@ CapsLockU 是我自用的一套按键映射方案，主要应用场景为文字�
 | `CapsLock`+`k` | `Down` | 下方向键。 |
 | `CapsLock`+`l` | `Right` | 右方向键 |
 | `CapsLock`+`n` | `Page Down` | 将光标或页面下移一个画面。键位取自 Page Dow**n** 。 |
+| `CapsLock`+`p` | `Page Up` | 将光标或页面上移一个画面。键位取自 Page U**p**。考虑过使用与 `n` 对称的 `u` 作为热键，但实际使用中 `p` 更为顺手。 |
 | `CapsLock`+`q` | `Escape` | 退出、关闭。键位取自单词 **Q**uit 。 |
 | `CapsLock`+`s` | `Shift` | 效果等同于 `Shift` 键，在使用 `CapsLock` 作为修饰键时这样更顺手。 |
-| `CapsLock`+`t` | 打开 Windows 自带的终端。 | 这在日常办公中也有可能用到，后面详细说明。键位取自单词 **T**erminal 。  |
-| `CapsLock`+`u` | `Page Up` | 将光标或页面上移一个画面。键位取自 Page **U**p。 |
 
 ## 其他
 

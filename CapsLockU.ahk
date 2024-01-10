@@ -70,6 +70,10 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     {
         process_key_mapping("{PgDn}")
     }
+    *p::
+    {
+        process_key_mapping("{PgUp}")
+    }
     *q::
     {
         process_key_mapping("{Escape}")
@@ -77,17 +81,6 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     *s::
     {
         process_native_modifier_mapping("s", "Shift")
-    }
-    *t::
-    {
-        global capslock_modifier_activated := true
-        SetWorkingDir A_Desktop
-        Run "powershell"
-        SetWorkingDir A_ScriptDir
-    }
-    *u::
-    {
-        process_key_mapping("{PgUp}")
     }
 }
 #Hotif
@@ -107,9 +100,9 @@ process_native_modifier_mapping(source_key, mapped_key)
 {
     global
     capslock_modifier_activated := true
-    mapped_key_down := "{Blind}" . "{" . mapped_key . "Down}"
+    mapped_key_down := "{Blind}{" . mapped_key . "Down}"
     SendInput %"mapped_key_down"%
-    mapped_key_up := "{Blind}" . "{" . mapped_key . "Up}"
+    mapped_key_up := "{Blind}{" . mapped_key . "Up}"
     KeyWait source_key
     SendInput %"mapped_key_up"%
 }
