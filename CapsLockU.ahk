@@ -24,7 +24,10 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
 {
     *a::
     {
-        process_native_modifier_mapping("a", "Alt")
+        SendInput "{Alt Down}"
+        global capslock_modifier_activated := true
+        KeyWait "a"
+        SendInput "{Alt Up}"
     }
     *b::
     {
@@ -32,7 +35,10 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     }
     *c::
     {
-        process_native_modifier_mapping("c", "Ctrl")
+        SendInput "{Ctrl Down}"
+        global capslock_modifier_activated := true
+        KeyWait "c"
+        SendInput "{Ctrl Up}"
     }
     *d::
     {
@@ -80,7 +86,10 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
     }
     *s::
     {
-        process_native_modifier_mapping("s", "Shift")
+        SendInput "{Shift Down}"
+        global capslock_modifier_activated := true
+        KeyWait "s"
+        SendInput "{Shift Up}"
     }
 }
 #Hotif
@@ -93,16 +102,4 @@ process_key_mapping(mapped_key)
     capslock_modifier_activated := true
     mapped_key := "{Blind}" . mapped_key
     SendInput %"mapped_key"%
-}
-
-; Functions used to map a , c , s to Alt , Ctrl , and Shift respectively
-process_native_modifier_mapping(source_key, mapped_key)
-{
-    global
-    capslock_modifier_activated := true
-    mapped_key_down := "{Blind}{" . mapped_key . "Down}"
-    SendInput %"mapped_key_down"%
-    mapped_key_up := "{Blind}{" . mapped_key . "Up}"
-    KeyWait source_key
-    SendInput %"mapped_key_up"%
 }
