@@ -91,6 +91,42 @@ global capslock_modifier_activated := false ; flag variable, keep track of wheth
         KeyWait "s"
         SendInput "{Shift Up}"
     }
+    *w::
+    {
+        is_w_double_clicks := ThisHotkey == A_PriorHotkey && A_TimeSincePriorHotkey <= 500 ? true : false
+        global capslock_modifier_activated := true
+        if (is_w_double_clicks)
+        {
+            SendInput "{Blind}{Home}{Home}+{End}+{Right}"
+        }
+        else
+        {
+            ; Select the word at the cursor position
+            ; Determine whether the character to the left of the cursor position is a punctuation mark, space, tab, etc.
+            ClipSaved := ClipboardAll()
+            A_Clipboard := ""
+            SendInput "{Blind}{Left}{Right}+{Left}^c{Right}"
+            ClipWait(1)
+            left_char := A_Clipboard
+            if (RegExMatch(left_char, "[\w|\p{Han}]")) ; This regular expression matches all Latin letters, numbers, underscores `_`, and Chinese characters.
+            {
+                SendInput "{Blind}^{Left}^+{Right}"
+            }
+            else
+            {
+                SendInput "{Blind}^+{Right}"
+            }
+            A_Clipboard := ""
+            SendInput "^c"
+            ClipWait(1)
+            current_char := A_Clipboard
+            if (RegExMatch(current_char, "[\s]"))
+            {
+                SendInput "{Blind}{Left}^+{Left}"
+            }
+            A_Clipboard := ClipSaved
+        }
+    }
 }
 #Hotif
 
